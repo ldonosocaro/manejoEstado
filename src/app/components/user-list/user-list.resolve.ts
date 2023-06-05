@@ -7,17 +7,23 @@ import { UserResponse } from 'src/app/response/user-response';
 import { UserService } from 'src/app/services/state/user.service';
 
 @Injectable({ providedIn: 'root' })
-export class UserListResolver implements Resolve<UserResponse> {
+export class UserListResolver implements Resolve<void> {
 
     constructor(private userService: UserService, private router: Router) { }
 
-    resolve(route: ActivatedRouteSnapshot): Observable<UserResponse> {
+    resolve(route: ActivatedRouteSnapshot): Observable<void> {
+      debugger
         return this.userService.getUser().pipe(
-            take(1),
+            //take(1),
             map(data => {
                 console.log(data)
-                if (data.status === '200') { return data; }
-                else { this.router.navigate(['error/robot']); }
+                if (data.status === '200') {
+                  debugger
+                  this.userService.setCurrentUser(data.response);
+                }
+                else {
+                  this.router.navigate(['error/robot']);
+                }
             })
         );
     }

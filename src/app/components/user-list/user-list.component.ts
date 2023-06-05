@@ -12,7 +12,7 @@ import { UserService } from 'src/app/services/state/user.service';
 })
 export class UserListComponent implements OnInit, OnDestroy {
   public userData: User;
-  private userSubscription: Subscription | undefined;
+  private userSubscription: Subscription;
 
   constructor(private userService: UserService, private route: ActivatedRoute) { }
 
@@ -21,13 +21,16 @@ export class UserListComponent implements OnInit, OnDestroy {
   }
 
   getUser(): void {
-    this.userSubscription = this.userService.getUser().subscribe((data: UserResponse) => {
+/*     this.userSubscription = this.userService.getUser().subscribe((data: UserResponse) => {
       debugger;
       this.userData = data.response;
-    });
+    }); */
+    debugger;
+    this.userSubscription = this.userService.currentUser.subscribe(data => this.userData = data);
   }
 
   ngOnDestroy(): void {
+    //this.userSubscription.closed;
     this.userSubscription?.unsubscribe();
   }
 

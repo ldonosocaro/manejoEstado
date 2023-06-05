@@ -15,7 +15,7 @@ export class UserService {
 
   /**
    * @description metodo que seatea el usuario
-   * @param currentUser 
+   * @param currentUser
    */
   setCurrentUser(currentUser: User): void {
     this.currentUserSubject.next(currentUser);
@@ -35,9 +35,7 @@ export class UserService {
     return of({
       status: '200',
       response: {name: "Luis Donoso", age: 23, department: [12, 45]}
-    }).pipe(
-      delay(1000)
-    )
+    })/*  */
   }
 
 }

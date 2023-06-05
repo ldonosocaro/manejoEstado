@@ -6,7 +6,8 @@ import { UserListResolver } from './user-list.resolve';
 const routes: Routes = [
   {
     path: '',
-    component: UserListComponent
+    component: UserListComponent,
+    resolve: {rslv: UserListResolver}
   }
 ];
 
