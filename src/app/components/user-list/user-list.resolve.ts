@@ -14,14 +14,13 @@ export class UserListResolver implements Resolve<void> {
     constructor(private userListServuce: UserListService, private userService: UserStateService, private router: Router) { }
 
     resolve(route: ActivatedRouteSnapshot): Observable<void> {
-      debugger
         return this.userListServuce.getUsers().pipe(
             //take(1),
             map((data: UsersResponse) => {
                 console.log(data)
                 if (data.status === '200') {
-                  debugger
                   this.userService.setUserList(data.response);
+                  return;
                 }
                 else {
                   this.router.navigate(['error/robot']);

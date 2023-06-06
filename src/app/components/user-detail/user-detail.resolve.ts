@@ -7,15 +7,12 @@ import { UserDetailService } from 'src/app/services/component/user-detail.servic
 import { UserStateService } from 'src/app/services/state/user-state.service';
 
 @Injectable({ providedIn: 'root' })
-export class YourResolver implements Resolve<void> {
+export class UserDetailResolver implements Resolve<void> {
 
   constructor(private userService: UserStateService, private userDetailService: UserDetailService, private router: Router) { }
 
   resolve(route: ActivatedRouteSnapshot): Observable<void> {
-    let userId = undefined;
-    route.params.subscribe(params => {
-      userId = params['userId']
-    });
+    const userId = parseInt(route.params['userId']);
     return this.userDetailService.getUser(userId).pipe(
       take(1),
       map((data: UserResponse) => {

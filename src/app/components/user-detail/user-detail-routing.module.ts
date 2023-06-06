@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UserDetailComponent } from './user-detail.component';
+import { UserDetailResolver } from './user-detail.resolve';
 
 const routes: Routes = [
   {
     path: '',
-    component: UserDetailComponent
+    component: UserDetailComponent,
+    resolve: {rslv: UserDetailResolver}
   }
 ];
 

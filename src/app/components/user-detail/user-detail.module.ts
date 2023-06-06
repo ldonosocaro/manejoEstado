@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { UserDetailRoutingModule } from './user-detail-routing.module';
 import { UserDetailComponent } from './user-detail.component';
+import { UserDetailResolver } from './user-detail.resolve';
 
 
 @NgModule({
@@ -10,6 +11,7 @@ import { UserDetailComponent } from './user-detail.component';
   imports: [
     CommonModule,
     UserDetailRoutingModule
-  ]
+  ],
+  providers: [UserDetailResolver]
 })
 export class UserDetailModule { }
