@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: () => import('./components/user-list/user-list.module').then((m) => m.UserListModule)
   },
   {
+    path: 'user/detail/:userId',
+    loadChildren: () => import('./components/user-detail/user-detail.module').then((m) => m.UserDetailModule)
+  },
+  {
     path: 'user/update',
     loadChildren: () => import('./components/user-update/user-update.module').then((m) => m.UserUpdateModule)
   },

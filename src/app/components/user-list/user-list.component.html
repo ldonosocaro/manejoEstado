@@ -1,2 +1,21 @@
-<p>user-list works!</p>
-{{userData | json}}
+<div class="container">
+    <h3>Lista de usuarios</h3>
+
+    <table class="table table-info table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Detalle</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="table-light" *ngFor="let user of userList">
+                <td>{{user.name}}</td>
+                <td>Ver Detalle</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+{{userList | json}}
